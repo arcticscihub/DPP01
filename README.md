@@ -128,3 +128,7 @@ npm dev:docker:run
 ```shell
 npm run dev:db:remove # Delete the mongodb-container locally.
 ```
+
+## Need help or other information
+
+Please contact the repo owner. We can assist with installation and use.
