@@ -1,6 +1,37 @@
-# Node API
+# Digital Product Passports
 
-## Code style
+DPP01 is an open-source platform for harvesting and organising data and information to support the management and creation of Digital Product Passports (DPPs).
+
+## What are DPPs?
+
+A Digital Product Passport is a structured digital profile that accompanies a product throughout its entire lifecycle. It gathers and organises key information about the product: from raw material extraction and manufacturing to use, repair, reuse, and end-of-life handling.
+
+## What is the purpose of a DPP?
+
+The purpose of a Digital Product Passport is to make product information accessible, reliable, and interoperable. By improving transparency and traceability across value chains, DPPs support circular economy strategies, regulatory compliance, and more informed decision-making by manufacturers, authorities, service providers, and consumers.
+
+## What can the DPP code be used for? 
+
+### Generate Digital Product Passports
+Create structured digital records that capture product information across production processes, including material composition, sourcing, and usage.
+
+### Support regulatory compliance
+Prepare for and respond to EU Digital Product Passport requirements and related sustainability legislation.
+
+### Enable traceability and transparency
+Provide reliable product-level data across the value chain, increasing trust and reducing administrative friction.
+
+### Streamline reporting
+Reuse structured product data across sustainability reporting, climate accounting and customer documentation.
+
+### Strengthen circularity and resource management
+Document product composition and lifecycle information in ways that enable reuse, recycling and more efficient resource utilisation.
+
+# Deployment 
+
+## Node API
+
+### Code style
 
 To ensure that code is formatted similarly, regardless of who the author is, we use prettier. In order for a formatting commit not to show up in git blame, you can add it to `.git-blame-ignore-revs`
 
@@ -19,7 +50,7 @@ echo "npx prettier './**/*.{js,ts,md,json}' -c" >> .git/hooks/pre-commit
 chmod ug+x .git/hooks/pre-commit
 ```
 
-## ENV variables
+### ENV variables
 
 Put in `.env` for local testing, or set the variables using export, like this
 
@@ -29,7 +60,7 @@ export MONGODB_URL=mongodb://localhost:27017/arcticsciencehubdb
 
 Additionally, when using `docker run`, you can add in `-e MONGODB_URL`
 
-### Mandatory
+#### Mandatory
 
 - `AWS_ACCESS_KEY_ID` - Secret. Used for the SES integration. See Discord for information
 - `AWS_SECRET_ACCESS_KEY` - Secret. Used for the SES integration. See Discord for information
@@ -51,7 +82,7 @@ npm run keys:generate # Generates 2 files, private.jwk and public.jwk, will serv
 
 Currently, this is included in [dockerfile](/dockerfile).
 
-### Optional
+#### Optional
 
 - `ADMIN_EMAIL` - Email to the root administrator user. This user can be used to log in and elevate other users. If both this and `ADMIN_PASSWORD` is set, an administrator user will be created.
 - `ADMIN_PASSWORD` - Password to root administrator user. This user can be used to log in and elevate other users. If both this and `ADMIN_EMAIL` is set, an administrator user will be created.
@@ -78,19 +109,19 @@ Currently, this is included in [dockerfile](/dockerfile).
 - `S3_BUCKET` - Ovverride the default bucket.
   - Default: `'arcticsciencehub-agreements'`
 
-## Endpoints
+### Endpoints
 
 The available endpoints in the API is documented with Swagger, and is available as long as the API is directly available (either on a locally hosted dev server, or with a reachable URL). The URI for the Swagger documentation is `/api/doc`. On a locally hosted dev server, with default port 5000, the full address would then be `http://localhost:5000/api/doc`. While using Swagger to test the endpoints still required authentication, it is probably still wise to block open and direct connections in production environments.
 
-## AWS
+### AWS
 
 The application uses AWS built in services for both sending emails and storing files. Brief description of each below
 
-### S3 (Storage)
+#### S3 (Storage)
 
 Contracts can be stored with file attachments, which is saved to an S3 Bucket, and subsequently a file path reference is added to the contract in the database. By default, the API will target and use a bucket named `'arcticsciencehub-agreements'`, but this can be overridden, using the `S3_BUCKET` environemnt variable. The files stored here are updated and / or deleted through automatic tasks, in accordance with the state of the contracts they belong to.
 
-### SES (Email notifications)
+#### SES (Email notifications)
 
 Some of the actions in the application will trigger emails to either get a confirmation, or simply to notify the user, using the `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `SES` environment variable to connect. The templates for these emails can be found in the `\templates` directory. Each template has both html and txt versions, and both are in use (since not all emails support markdown language such as clickable links). Both versions should therefor be kept up to date.
 
@@ -104,7 +135,7 @@ The available templates are as follows:
 
 These email templates include the use of some variables, one of which being a link used to confirm the email (when signing up / being invited) or verify the action (reseting password or deleting the account). This link is generated based on the mandatory `FRONTEND_BASE_URL` variable (see environment variables)
 
-## Starting a dev environment
+### Starting a dev environment
 
 If you want to run the api locally for development, you can set it up as a node dev server like this:
 
@@ -123,12 +154,12 @@ npm run dev:db:create
 npm dev:docker:run
 ```
 
-## Cleanup
+### Cleanup
 
 ```shell
 npm run dev:db:remove # Delete the mongodb-container locally.
 ```
 
-## Need help or other information
+### Need help or other information
 
 Please contact the repo owner. We can assist with installation and use.
