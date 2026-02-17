@@ -31,7 +31,7 @@ Document product composition and lifecycle information in ways that enable reuse
 
 To deploy, customise, and adapt the solution to their specific organisational needs, businesses have several options:
 
-* Contact the repository owner on Github or email arcticsciencehub at gmail dot com for support with setup, configuration, and implementation guidance.
+* Contact the repository owner on Github or [email](arcticsciencehub@gmail.com) for support with setup, configuration, and implementation guidance.
 * Engage a DevOps specialist with AWS expertise to deploy the solution independently within their own infrastructure.
 * Share the repository link with an external technical provider to obtain a quote for deployment, configuration, and potential customisation.
 * Use an internal DevOps team to deploy, configure, and further develop the solution in alignment with their technical architecture and business requirements.
