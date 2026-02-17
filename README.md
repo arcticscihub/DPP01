@@ -10,7 +10,7 @@ A Digital Product Passport is a structured digital profile that accompanies a pr
 
 The purpose of a Digital Product Passport is to make product information accessible, reliable, and interoperable. By improving transparency and traceability across value chains, DPPs support circular economy strategies, regulatory compliance, and more informed decision-making by manufacturers, authorities, service providers, and consumers.
 
-## What can the DPP code be used for? 
+## What can the DPPs be used for? 
 
 ### Generate Digital Product Passports
 Create structured digital records that capture product information across production processes, including material composition, sourcing, and usage.
